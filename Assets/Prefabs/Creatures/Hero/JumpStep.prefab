@@ -99,29 +99,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 0
-  _sprits:
-  - {fileID: 21300000, guid: ca4fc413586098c4aaba8d62b1c35941, type: 3}
-  - {fileID: 21300000, guid: 5fcc9beaa452d3a49865d67f9f689028, type: 3}
-  - {fileID: 21300000, guid: 86f27646abcc7b245a65b12d0da6090e, type: 3}
-  - {fileID: 21300000, guid: 487227dbaf39230419601bf97b595824, type: 3}
-  - {fileID: 21300000, guid: 2a4fa4bffa3aaeb4e867714c32ec0791, type: 3}
-  - {fileID: 21300000, guid: 508648c2038a3d4448a86511555b3d80, type: 3}
   _onComplete:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1985168410250670182}
-        m_TargetAssemblyTypeName: PixelCrew.Components.DestroyObjectComponent, Assembly-CSharp
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  _clips:
+  - _name: jump
+    _sprites:
+    - {fileID: 21300000, guid: ca4fc413586098c4aaba8d62b1c35941, type: 3}
+    - {fileID: 21300000, guid: 5fcc9beaa452d3a49865d67f9f689028, type: 3}
+    - {fileID: 21300000, guid: 86f27646abcc7b245a65b12d0da6090e, type: 3}
+    - {fileID: 21300000, guid: 487227dbaf39230419601bf97b595824, type: 3}
+    - {fileID: 21300000, guid: 2a4fa4bffa3aaeb4e867714c32ec0791, type: 3}
+    - {fileID: 21300000, guid: 508648c2038a3d4448a86511555b3d80, type: 3}
+    _loop: 0
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1985168410250670182}
+          m_TargetAssemblyTypeName: PixelCrew.Components.DestroyObjectComponent,
+            Assembly-CSharp
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1985168410250670182
 MonoBehaviour:
   m_ObjectHideFlags: 0

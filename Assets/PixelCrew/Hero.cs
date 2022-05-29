@@ -81,10 +81,6 @@ namespace PixelCrew
             {
                 yVelocity = CalculateJumpVelocity(yVelocity);                
             }
-            /* else if (_rigidbody.velocity.y > 0) // Фиксированный прыжок по нажатию, или недопрыжок
-             {
-                 yVelocity *= 0.5f);
-             }*/
             return yVelocity;
         }
         private float CalculateJumpVelocity(float yVelocity)
@@ -137,10 +133,12 @@ namespace PixelCrew
             if (_coin > 0)
             {
                 SpawnCoins();
+                Debug.Log($"Баланс: {_coin}");
+                
             }
             
         }
-        public void SpawnCoins()
+        private void SpawnCoins()
         {
             var numCoinsToDispose = Mathf.Min(_coin, 5);
             _coin -= numCoinsToDispose;
@@ -173,6 +171,10 @@ namespace PixelCrew
         public void SpawnFallDust()
         {
             _spawnFallParticles.Spawn();
+        }
+        public void OffParticles()
+        {
+            _hitParticles.gameObject.SetActive(false);
         }
    
     }
