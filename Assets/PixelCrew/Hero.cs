@@ -37,6 +37,8 @@ namespace PixelCrew
         private static readonly int _hit = Animator.StringToHash("hit");
 
         private float _coin = 0;
+        public bool _isMoving;
+
 
         private void Awake()
         {
@@ -47,6 +49,13 @@ namespace PixelCrew
         public void SetDirection(Vector2 direction)
         {
             _direction = direction;
+            
+            if(_direction.x != 0)
+            {
+                _isMoving = true;
+            }
+            else 
+            { _isMoving = false; }
         }
         private void Update()
         {
@@ -58,6 +67,7 @@ namespace PixelCrew
             {
                 SpawnFallDust();
             }
+
             var xVelocity = _direction.x * _speed;
             var yVelocity = CalculateYVelocity();
             _rigidbody.velocity = new Vector2(xVelocity, yVelocity);                     
@@ -176,6 +186,7 @@ namespace PixelCrew
         {
             _hitParticles.gameObject.SetActive(false);
         }
-   
+
+
     }
 }

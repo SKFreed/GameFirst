@@ -5578,7 +5578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: -0.53, z: -10}
+  m_LocalPosition: {x: 0.43, y: -0.451, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6047,6 +6047,7 @@ GameObject:
   - component: {fileID: 802037781}
   - component: {fileID: 802037782}
   - component: {fileID: 802037783}
+  - component: {fileID: 802037784}
   m_Layer: 6
   m_Name: MovePlatform
   m_TagString: Untagged
@@ -6065,9 +6066,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.041112304}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6078,7 +6079,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.5}
+  m_Size: {x: 3, y: 0.42083}
   m_EdgeRadius: 0
 --- !u!212 &802037779
 SpriteRenderer:
@@ -6161,7 +6162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _point1: {x: -5, y: 4, z: 0}
   _point2: {x: 5, y: 4, z: 0}
-  _speed: 1
+  _speed: 0.5
+  _hero: {fileID: 1488946920360817844}
 --- !u!114 &802037782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6180,11 +6182,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 802037781}
         m_TargetAssemblyTypeName: PixelCrew.Components.MovePlatformComponent, Assembly-CSharp
-        m_MethodName: SetChild
-        m_Mode: 2
+        m_MethodName: OnPlat
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1286373756}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6208,16 +6210,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 802037781}
         m_TargetAssemblyTypeName: PixelCrew.Components.MovePlatformComponent, Assembly-CSharp
-        m_MethodName: ResetChild
-        m_Mode: 2
+        m_MethodName: NotOnPlat
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1286373756}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!251 &802037784
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802037777}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 88.34
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &979026046
 GameObject:
   m_ObjectHideFlags: 0
@@ -16632,7 +16653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643677366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.43, y: -0.53, z: -10}
+  m_LocalPosition: {x: 0.43, y: -0.451, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18850,6 +18871,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 979026049}
     - target: {fileID: 1488946919348123085, guid: 11cc391f6430ad148a78e027edb7c5b1, type: 3}
+      propertyPath: _movePlatform
+      value: 
+      objectReference: {fileID: 802037781}
+    - target: {fileID: 1488946919348123085, guid: 11cc391f6430ad148a78e027edb7c5b1, type: 3}
       propertyPath: _damageJumpSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -18895,7 +18920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1488946919348123087, guid: 11cc391f6430ad148a78e027edb7c5b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.53
+      value: -0.451
       objectReference: {fileID: 0}
     - target: {fileID: 1488946919348123087, guid: 11cc391f6430ad148a78e027edb7c5b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19447,7 +19472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6335652105275616151, guid: 11a01e3a84ed6c64a9ed422e3d05ef3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 15.02
       objectReference: {fileID: 0}
     - target: {fileID: 6335652105275616151, guid: 11a01e3a84ed6c64a9ed422e3d05ef3c, type: 3}
       propertyPath: m_LocalPosition.y
