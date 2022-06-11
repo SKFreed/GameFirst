@@ -19,6 +19,7 @@ namespace PixelCrew
         private Collider2D[] _interactionResult = new Collider2D[1];
         [SerializeField] private LayerMask _interactionLayer;
 
+        [Space] [Header ("Particles:")]
         [SerializeField] private SpawnComponent _spawnStepParticles;
         [SerializeField] private ParticleSystem _hitParticles;
         [SerializeField] private SpawnComponent _spawnJumpParticles;
@@ -38,7 +39,7 @@ namespace PixelCrew
 
         private float _coin = 0;
         public bool _isMoving;
-
+        private float _slamDownVelocity = 1f;
 
         private void Awake()
         {
@@ -63,10 +64,10 @@ namespace PixelCrew
         }
         private void FixedUpdate()
         {   
-            if (_isGrounded == true && _allowDoubleJump == false)
+            /*if (_isGrounded == true && _allowDoubleJump == false)
             {
                 SpawnFallDust();
-            }
+            }*/
 
             var xVelocity = _direction.x * _speed;
             var yVelocity = CalculateYVelocity();
@@ -100,11 +101,13 @@ namespace PixelCrew
             if (_isGrounded) // если мы падаем
             {
                 yVelocity += _jumpSpeed;
+                SpawnJumpDust();
             }
             else if (_allowDoubleJump)
             {
                 yVelocity = _jumpSpeed;
                 _allowDoubleJump = false;
+                SpawnJumpDust();
             }
             return yVelocity;
         }
@@ -185,6 +188,17 @@ namespace PixelCrew
         public void OffParticles()
         {
             _hitParticles.gameObject.SetActive(false);
+        }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (_isGrounded)
+            {
+                var cotanct = collision.contacts[0];
+                if (cotanct.relativeVelocity.y >= _slamDownVelocity)
+                {
+                    SpawnFallDust();
+                }
+            }
         }
 
 

@@ -38,7 +38,7 @@ namespace PixelCrew // Запускает цикл при котором меняет спрайты из массива
         private void StartAnimation()
         {
             _nextFrameTime = Time.time + _secondsPerFrame;
-            _isPlaying = true;
+            enabled = _isPlaying = true;
             _currentFrame = 0;
         }
         public void SetClip (string clipName)
@@ -71,9 +71,9 @@ namespace PixelCrew // Запускает цикл при котором меняет спрайты из массива
                 }
                 else
                 {
+                    enabled = _isPlaying = clip.AllowNextClip;
                     clip.OnComplete?.Invoke();
                     _onComplete?.Invoke(clip.Name);
-                    enabled = _isPlaying = clip.AllowNextClip;
                     if (clip.AllowNextClip)
                     {
                         _currentFrame = 0;

@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -119,10 +119,10 @@ TextureImporter:
       name: Barrel_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2
-        width: 32
-        height: 32
+        x: 5
+        y: 0
+        width: 23
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: Barrel_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 2
-        width: 32
-        height: 32
+        x: 37
+        y: 0
+        width: 23
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: Barrel_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 69
         y: 0
-        width: 32
-        height: 32
+        width: 23
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: Barrel_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 2
-        width: 32
-        height: 32
+        x: 100
+        y: 0
+        width: 25
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: Barrel_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 2
-        width: 32
-        height: 32
+        x: 133
+        y: 0
+        width: 23
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +224,10 @@ TextureImporter:
       name: Barrel_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 2
-        width: 32
-        height: 32
+        x: 166
+        y: 0
+        width: 23
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,12 +245,12 @@ TextureImporter:
       name: Barrel_6
       rect:
         serializedVersion: 2
-        x: 195
+        x: 197
         y: 2
-        width: 37
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 15
+        height: 15
+      alignment: 9
+      pivot: {x: 0.22922458, y: 0.1660441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -258,6 +258,69 @@ TextureImporter:
       bones: []
       spriteID: 22b77ced5e88aca4fb60011a637a8242
       internalID: 1708725962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barrel_7
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 1
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38e36b1565176347b94d74d6a9a381b
+      internalID: 1728061276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barrel_8
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 19
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f85af503ef5d0468c67566ac42532e
+      internalID: -1320724980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barrel_9
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 19
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952a64dfb72277f45baf04a7a9b64707
+      internalID: 865320365
       vertices: []
       indices: 
       edges: []
@@ -277,9 +340,12 @@ TextureImporter:
       Barrel_0: -2011998574
       Barrel_6: 1708725962
       Barrel_5: 984549471
+      Barrel_8: -1320724980
       Barrel_4: -630624077
+      Barrel_7: 1728061276
       Barrel_2: -1287895597
       Barrel_3: -1853844266
+      Barrel_9: 865320365
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
