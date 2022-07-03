@@ -1,6 +1,8 @@
 using PixelCrew.Components;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace PixelCrew
@@ -10,6 +12,7 @@ namespace PixelCrew
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;  
         [SerializeField] private float _damageJumpSpeed;
+        [SerializeField] private int _damage;
 
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float _groundCheckRadius;
@@ -18,6 +21,10 @@ namespace PixelCrew
         [SerializeField] private float _interactionRadius;
         private Collider2D[] _interactionResult = new Collider2D[1];
         [SerializeField] private LayerMask _interactionLayer;
+        [SerializeField] private CheckCircleOverlap _attackRange;
+
+        [SerializeField] private AnimatorController _armed;
+        [SerializeField] private AnimatorController _disarmed;
 
         [Space] [Header ("Particles:")]
         [SerializeField] private SpawnComponent _spawnStepParticles;
@@ -28,24 +35,25 @@ namespace PixelCrew
         private Vector2 _direction;
         private Rigidbody2D _rigidbody;
         private Animator _animator;
-        //private SpriteRenderer _sprite;
         private bool _isGrounded;
         private bool _allowDoubleJump;
+
 
         private static readonly int _isGroundKey = Animator.StringToHash("is-ground");
         private static readonly int _isRunningKey = Animator.StringToHash("is-running");
         private static readonly int _velocityVerticalKey = Animator.StringToHash("vertical-velocity");
         private static readonly int _hit = Animator.StringToHash("hit");
+        private static readonly int _attack = Animator.StringToHash("attack");
 
         private float _coin = 0;
         public bool _isMoving;
         private float _slamDownVelocity = 1f;
+        private bool _isArmed;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
-           // _sprite = GetComponent<SpriteRenderer>();
         }
         public void SetDirection(Vector2 direction)
         {
@@ -116,11 +124,14 @@ namespace PixelCrew
             var hit = Physics2D.CircleCast(transform.position + _groundCheckPositionDelta,_groundCheckRadius,Vector2.down,0,_groundLayer);            
             return hit.collider != null;
         }
+#if UNITY_EDITOR //При компиляции на другую платформу этот код вырежется
         private void OnDrawGizmos()
         {
-            Gizmos.color = IsGrounded() ? Color.green : Color.red;
-            Gizmos.DrawSphere(transform.position + _groundCheckPositionDelta, _groundCheckRadius);
+            Handles.color = IsGrounded() ? HandlesUtils.TransparentGreen : HandlesUtils.TransparentRed;
+            Handles.DrawSolidDisc(transform.position + _groundCheckPositionDelta, Vector3.forward, _groundCheckRadius);
         }
+#endif
+
         private void UpdateSpriteDirection()
         {
             if (_direction.x > 0)
@@ -173,6 +184,24 @@ namespace PixelCrew
                 }
             }
         }
+        public void Attack()
+        {
+            if (!_isArmed) return;
+            _animator.SetTrigger(_attack);
+
+        }
+        public void OnAttackToEnemy()//Запуск через ивент в анимации
+        {
+            var objects = _attackRange.GetObjectsInRange();
+            foreach(var obj in objects)
+            {
+                var hp = obj.GetComponent<HealthComponent>();
+                if(hp != null && obj.CompareTag("Enemy"))
+                {
+                    hp.ModifyHealth(_damage);
+                }
+            }
+        }
         public void SpawnFootDust()
         {
             _spawnStepParticles.Spawn();
@@ -199,6 +228,11 @@ namespace PixelCrew
                     SpawnFallDust();
                 }
             }
+        }
+        public void ArmHero()
+        {
+            _isArmed = true;
+            _animator.runtimeAnimatorController = _armed;
         }
 
 
