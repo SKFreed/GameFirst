@@ -106,7 +106,7 @@ namespace PixelCrew
         {
             var isFalling = _rigidbody.velocity.y <= 0.1f;
             if (!isFalling) return yVelocity;
-            if (_isGrounded) // если мы падаем
+            if (_isGrounded) 
             {
                 yVelocity += _jumpSpeed;
                 SpawnJumpDust();
@@ -220,7 +220,15 @@ namespace PixelCrew
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (_isGrounded)
+            /*            if (_isGrounded)
+                        {
+                            var cotanct = collision.contacts[0];
+                            if (cotanct.relativeVelocity.y >= _slamDownVelocity)
+                            {
+                                SpawnFallDust();
+                            }
+                        }*/
+            if (collision.gameObject.IsInLayer(_groundLayer))
             {
                 var cotanct = collision.contacts[0];
                 if (cotanct.relativeVelocity.y >= _slamDownVelocity)

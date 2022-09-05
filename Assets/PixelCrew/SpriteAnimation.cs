@@ -8,7 +8,7 @@ namespace PixelCrew // Запускает цикл при котором меняет спрайты из массива
     public class SpriteAnimation : MonoBehaviour
     {
         [SerializeField] [Range (1,30)] private int _frameRate = 10;
-        [SerializeField] private UnityEvent<string> _onComplete;
+        private UnityEvent<string> _onComplete;
         [SerializeField] private AnimationClip[] _clips;
 
         private SpriteRenderer _renderer;
